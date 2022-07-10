@@ -33,7 +33,6 @@ const Exchange = () => {
       {
         name: name,
         value: input,
-        valueAfterChange: output,
       },
     ]);
   };
@@ -45,11 +44,15 @@ const Exchange = () => {
     event.target.reset();
   };
   const deleteTransaction = (index) => {
-    const filteredTransactions = transaction.filter((e) => {
-      return e !== index;
+    const filteredTransactions = transaction.filter((item, itemIndex) => {
+      return itemIndex !== index;
     });
     setTransaction(filteredTransactions);
   };
+  const result = transaction.reduce(
+    (p, c) => (p = Number(p) + Number(c.value)),
+    0
+  );
 
   return (
     <>
@@ -73,8 +76,6 @@ const Exchange = () => {
             <button
               onClick={() => {
                 convert();
-
-                console.log(transaction);
               }}
             >
               Przelicz
@@ -85,6 +86,8 @@ const Exchange = () => {
             {input} EUR = {output} PLN
           </p>
           <div className="transaction">
+            <p>Liczba transakcji: {transaction.length}</p>
+            <p>Suma transakcji: {result} EUR</p>
             <p>Lista transakcji:</p>
           </div>
           <div className="transactionList">
@@ -92,8 +95,12 @@ const Exchange = () => {
               <span key={index}>
                 <p>Nazwa transakcji: {transaction.name}</p>
                 <p>Wartość w EUR: {transaction.value}</p>
-                <p>Wartość w PLN: {transaction.valueAfterChange}</p>
-                <button onClick={() => deleteTransaction(index)}>
+                <p>Wartość w PLN: {transaction.value * info}</p>
+                <button
+                  onClick={() => {
+                    deleteTransaction(index);
+                  }}
+                >
                   Usuń transakcje
                 </button>
               </span>
