@@ -4,7 +4,7 @@ const Exchange = () => {
   const [name, setName] = useState("");
   const [info, setInfo] = useState(0);
   const [transaction, setTransaction] = useState([]);
-  const [input, setInput] = useState(0);
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState(0);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Exchange = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    setInput(0);
+    setInput("");
     setOutput(0);
     setName("");
     event.target.reset();
@@ -64,9 +64,11 @@ const Exchange = () => {
             <input
               type="text"
               placeholder="Wpisz wartość w euro"
-              onChange={(e) => (
-                setInput(e.target.value), setOutput(e.target.value * info)
-              )}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setOutput(e.target.value * info);
+              }}
+              value={input}
             />
             <input
               type="text"
@@ -83,7 +85,7 @@ const Exchange = () => {
           </form>
           <p>Nazwa transakcji: {name}</p>
           <p>
-            {input} EUR = {output} PLN
+            {input ? input : 0} EUR = {output} PLN
           </p>
           <div className="transaction">
             <p>Liczba transakcji: {transaction.length}</p>
