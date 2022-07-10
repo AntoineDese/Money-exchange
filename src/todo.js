@@ -8,7 +8,7 @@ const Exchange = () => {
   const [output, setOutput] = useState(0);
 
   useEffect(() => {
-    fetch("http://api.nbp.pl/api/exchangerates/rates/a/eur/")
+    fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/")
       .then((response) => {
         if (response.ok) {
           return response.json();
