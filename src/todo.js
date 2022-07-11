@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Transaction from "./components/Transaction";
+import TransactionListHeader from "./components/TransactionListHeader";
 
 const Exchange = () => {
   const [formTransactionName, setFormTransactionName] = useState("");
@@ -71,6 +73,7 @@ const Exchange = () => {
               type="text"
               placeholder="Wpisz nazwę transakcji"
               onChange={(e) => setFormTransactionName(e.target.value)}
+              value={formTransactionName}
             />
             <button
               onClick={() => {
@@ -85,25 +88,19 @@ const Exchange = () => {
             {formTransactionValue ? formTransactionValue : 0} EUR ={" "}
             {formExchangeValue} PLN
           </p>
-          <div className="transaction">
-            <p>Liczba transakcji: {transactions.length}</p>
-            <p>Suma transakcji: {result} EUR</p>
-            <p>Lista transakcji:</p>
-          </div>
+          <TransactionListHeader
+            transactionsCount={transactions.length}
+            transactionsTotalValue={result}
+          />
           <div className="transactionList">
-            {transactions.map((transactions, index) => (
-              <span key={index}>
-                <p>Nazwa transakcji: {transactions.name}</p>
-                <p>Wartość w EUR: {transactions.value}</p>
-                <p>Wartość w PLN: {transactions.value * rate}</p>
-                <button
-                  onClick={() => {
-                    deleteTransaction(index);
-                  }}
-                >
-                  Usuń transakcje
-                </button>
-              </span>
+            {transactions.map((transaction, index) => (
+              <Transaction
+                name={transaction.name}
+                index={index}
+                value={transaction.value}
+                rate={rate}
+                onDelete={() => deleteTransaction(index)}
+              />
             ))}
           </div>
         </div>
