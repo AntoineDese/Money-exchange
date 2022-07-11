@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Transaction from "./components/Transaction";
 import TransactionListHeader from "./components/TransactionListHeader";
+import TransactionForm from "./components/TransactionForm";
 
 const Exchange = () => {
   const [formTransactionName, setFormTransactionName] = useState("");
@@ -60,28 +61,14 @@ const Exchange = () => {
           <h1>EURO x PLN</h1>
           <div className="converter">Przelicznik: 1 EUR = {rate} PLN</div>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Wpisz wartość w euro"
-              onChange={(e) => {
-                setFormTransactionValue(e.target.value);
-                setFormExchangeValue(e.target.value * rate);
-              }}
-              value={formTransactionValue}
+            <TransactionForm
+              setFormTransactionValue={setFormTransactionValue}
+              setFormExchangeValue={setFormExchangeValue}
+              rate={rate}
+              setFormTransactionName={setFormTransactionName}
+              formTransactionName={formTransactionName}
+              convert={convert}
             />
-            <input
-              type="text"
-              placeholder="Wpisz nazwę transakcji"
-              onChange={(e) => setFormTransactionName(e.target.value)}
-              value={formTransactionName}
-            />
-            <button
-              onClick={() => {
-                convert();
-              }}
-            >
-              Przelicz
-            </button>
           </form>
           <p>Nazwa transakcji: {formTransactionName}</p>
           <p>
