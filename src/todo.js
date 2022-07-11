@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const Exchange = () => {
   const [formTransactionName, setFormTransactionName] = useState("");
   const [rate, setRate] = useState(0);
-  const [transaction, setTransaction] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   const [formTransactionValue, setFormTransactionValue] = useState("");
   const [formExchangeValue, setFormExchangeValue] = useState(0);
 
@@ -25,8 +25,8 @@ const Exchange = () => {
 
   const convert = () => {
     setFormExchangeValue(formTransactionValue * rate);
-    setTransaction((transaction) => [
-      ...transaction,
+    setTransactions((transactions) => [
+      ...transactions,
       {
         name: formTransactionName,
         value: formTransactionValue,
@@ -41,12 +41,12 @@ const Exchange = () => {
     event.target.reset();
   };
   const deleteTransaction = (index) => {
-    const filteredTransactions = transaction.filter((item, itemIndex) => {
+    const filteredTransactions = transactions.filter((item, itemIndex) => {
       return itemIndex !== index;
     });
-    setTransaction(filteredTransactions);
+    setTransactions(filteredTransactions);
   };
-  const result = transaction.reduce(
+  const result = transactions.reduce(
     (p, c) => (p = Number(p) + Number(c.value)),
     0
   );
@@ -86,16 +86,16 @@ const Exchange = () => {
             {formExchangeValue} PLN
           </p>
           <div className="transaction">
-            <p>Liczba transakcji: {transaction.length}</p>
+            <p>Liczba transakcji: {transactions.length}</p>
             <p>Suma transakcji: {result} EUR</p>
             <p>Lista transakcji:</p>
           </div>
           <div className="transactionList">
-            {transaction.map((transaction, index) => (
+            {transactions.map((transactions, index) => (
               <span key={index}>
-                <p>Nazwa transakcji: {transaction.name}</p>
-                <p>Wartość w EUR: {transaction.value}</p>
-                <p>Wartość w PLN: {transaction.value * rate}</p>
+                <p>Nazwa transakcji: {transactions.name}</p>
+                <p>Wartość w EUR: {transactions.value}</p>
+                <p>Wartość w PLN: {transactions.value * rate}</p>
                 <button
                   onClick={() => {
                     deleteTransaction(index);
