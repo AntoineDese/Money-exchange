@@ -1,5 +1,5 @@
 function Transaction (props) {
-    return <span key={props.index}>
+    return <span>
     <p>Nazwa transakcji: {props.name}</p>
     <p>Wartość w EUR: {props.value}</p>
     <p>Wartość w PLN: {props.value * props.rate}</p>

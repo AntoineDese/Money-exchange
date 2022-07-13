@@ -11,6 +11,7 @@ const TransactionList = props => {
           <div className="transactionList">
             {props.transactions.map((transaction, index) => (
               <Transaction
+                key = {index}
                 name={transaction.name}
                 index={index}
                 value={transaction.value}
