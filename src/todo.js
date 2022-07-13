@@ -32,7 +32,7 @@ const Exchange = () => {
     (p, c) => (p = Number(p) + Number(c.value)),
     0
   );
-
+  console.log(transactions);
   return (
     <>
       <div className="main-div">

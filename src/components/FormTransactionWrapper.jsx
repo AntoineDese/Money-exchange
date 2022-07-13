@@ -37,6 +37,7 @@ const FormTransactionWrapper = props => {
               rate={props.rate}
               setFormTransactionName={setFormTransactionName}
               formTransactionName={formTransactionName}
+              formTransactionValue={formTransactionValue}
               convert={convert}
             />
           </form>
