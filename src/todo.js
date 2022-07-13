@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from "react";
 import TransactionList from "./components/TransactionList";
 import FormTransactionWrapper from "./components/FormTransactionWrapper";
+import fetchRate from "./api/fetchRate";
 
 const Exchange = () => {
   const [rate, setRate] = useState(0);
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw response;
-      })
-      .then((data) => {
-        setRate(data.rates[0].mid);
-      })
-      .catch((error) => {
-        console.error("Błąd", error);
-      });
+    fetchRate(
+      (r) => setRate(r),
+      (err) => console.log("Something go wrong", err)
+    );
   }, []);
 
   const deleteTransaction = (index) => {
@@ -32,7 +24,7 @@ const Exchange = () => {
     (p, c) => (p = Number(p) + Number(c.value)),
     0
   );
-  console.log(transactions);
+
   return (
     <>
       <div className="main-div">
