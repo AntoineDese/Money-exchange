@@ -28,7 +28,7 @@ const Exchange = () => {
     });
     setTransactions(filteredTransactions);
   };
-  const result = transactions.reduce(
+  const sum = transactions.reduce(
     (p, c) => (p = Number(p) + Number(c.value)),
     0
   );
@@ -45,7 +45,7 @@ const Exchange = () => {
           />
           <TransactionList
             transactions={transactions}
-            result={result}
+            result={sum}
             rate={rate}
             deleteTransaction={deleteTransaction}
           />
