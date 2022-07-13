@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Transaction from "./components/Transaction";
-import TransactionListHeader from "./components/TransactionListHeader";
+import TransactionList from "./components/TransactionList";
 import TransactionForm from "./components/TransactionForm";
+import DraftTransactionSummary from "./components/DraftTransactionSummary";
 
 const Exchange = () => {
   const [formTransactionName, setFormTransactionName] = useState("");
@@ -70,26 +70,17 @@ const Exchange = () => {
               convert={convert}
             />
           </form>
-          <p>Nazwa transakcji: {formTransactionName}</p>
-          <p>
-            {formTransactionValue ? formTransactionValue : 0} EUR ={" "}
-            {formExchangeValue} PLN
-          </p>
-          <TransactionListHeader
-            transactionsCount={transactions.length}
-            transactionsTotalValue={result}
+          <DraftTransactionSummary
+            formTransactionName={formTransactionName}
+            formTransactionValue={formTransactionValue}
+            formExchangeValue={formExchangeValue}
           />
-          <div className="transactionList">
-            {transactions.map((transaction, index) => (
-              <Transaction
-                name={transaction.name}
-                index={index}
-                value={transaction.value}
-                rate={rate}
-                onDelete={() => deleteTransaction(index)}
-              />
-            ))}
-          </div>
+          <TransactionList
+            transactions={transactions}
+            result={result}
+            rate={rate}
+            deleteTransaction={deleteTransaction}
+          />
         </div>
       </div>
     </>
