@@ -1,4 +1,4 @@
-const fetchRate = (onSucces, onError) => {
+const fetchRate = (onSuccess, onError) => {
   fetch("https://api.nbp.pl/api/exchangerates/rates/a/eur/")
     .then((response) => {
       if (response.ok) {
@@ -7,7 +7,7 @@ const fetchRate = (onSucces, onError) => {
       throw response;
     })
     .then((data) => {
-      onSucces(data.rates[0].mid);
+      onSuccess(data.rates[0].mid);
     })
     .catch((error) => {
       onError(error);

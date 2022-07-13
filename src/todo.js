@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import TransactionList from "./components/TransactionList";
 import FormTransactionWrapper from "./components/FormTransactionWrapper";
+import ErrorMessage from "./components/ErrorMessage";
 import fetchRate from "./api/fetchRate";
 
 const Exchange = () => {
+  const [error, setError] = useState(false);
   const [rate, setRate] = useState(0);
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     fetchRate(
       (r) => setRate(r),
-      (err) => console.log("Something go wrong", err)
+      (err) => {
+        console.log("Something go wrong", err);
+        setError(true);
+      }
     );
   }, []);
 
@@ -30,6 +35,7 @@ const Exchange = () => {
       <div className="main-div">
         <div className="child-div">
           <h1>EURO x PLN</h1>
+          <ErrorMessage error={error} />
           <div className="converter">Przelicznik: 1 EUR = {rate} PLN</div>
           <FormTransactionWrapper
             rate={rate}
