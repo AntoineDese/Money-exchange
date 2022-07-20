@@ -1,3 +1,5 @@
+import "../App.css";
+
 const TransactionListHeader = props => {
     return (
     <div className="transaction">

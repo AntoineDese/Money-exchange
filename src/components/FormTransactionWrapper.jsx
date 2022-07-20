@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import TransactionForm from "./TransactionForm";
 import DraftTransactionSummary from "./DraftTransactionSummary";
-
+import "../App.css";
 
 
 const FormTransactionWrapper = props => {

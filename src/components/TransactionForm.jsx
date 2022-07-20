@@ -1,6 +1,8 @@
+import "../App.css";
+
 const TransactionForm = props => {
     return (
-        <>
+        <div className = "form">
         <input
               type="text"
               placeholder="Wpisz wartość w euro"
@@ -23,7 +25,7 @@ const TransactionForm = props => {
             >
               Przelicz
             </button>
-            </>
+            </div>
     )
 }
 

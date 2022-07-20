@@ -1,5 +1,6 @@
 import TransactionListHeader from "./TransactionListHeader";
 import Transaction from "./Transaction";
+import "../App.css";
 
 const TransactionList = props => {
     return (

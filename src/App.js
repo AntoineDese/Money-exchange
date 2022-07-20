@@ -1,8 +1,9 @@
 import React from "react";
 import Exchange from "./todo";
+import "./App.css";
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <Exchange />
     </div>
   );

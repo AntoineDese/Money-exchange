@@ -1,5 +1,9 @@
+import "../App.css";
+
 function Transaction (props) {
-    return <span>
+    return (
+        <div className = "list">
+    <span>
     <p>Nazwa transakcji: {props.name}</p>
     <p>Wartość w EUR: {props.value}</p>
     <p>Wartość w PLN: {props.value * props.rate}</p>
@@ -11,5 +15,6 @@ function Transaction (props) {
         Usuń transakcje
        </button>
     </span>
+    </div>)
 }
 export default Transaction;

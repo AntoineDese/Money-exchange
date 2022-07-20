@@ -3,6 +3,7 @@ import TransactionList from "./components/TransactionList";
 import FormTransactionWrapper from "./components/FormTransactionWrapper";
 import ErrorMessage from "./components/ErrorMessage";
 import fetchRate from "./api/fetchRate";
+import "./App.css";
 
 const Exchange = () => {
   const [error, setError] = useState(false);
@@ -34,7 +35,9 @@ const Exchange = () => {
     <>
       <div className="main-div">
         <div className="child-div">
-          <h1>EURO x PLN</h1>
+          <div className="heading">
+            <h1>EURO x PLN</h1>
+          </div>
           <ErrorMessage error={error} />
           <div className="converter">Przelicznik: 1 EUR = {rate} PLN</div>
           <FormTransactionWrapper
