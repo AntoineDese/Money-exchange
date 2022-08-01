@@ -2,37 +2,59 @@ body {
   background-color: blueviolet;
 }
 
-.container {
+.child-div {
   background-color: blue;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 }
-.heading h1 {
-  font-size: 100px;
+.content-div {
+  background-color: sienna;
+  display: flex;
+  width: 25vw;
+  flex-wrap: wrap;
+  margin: auto auto;
+  flex-direction: row;
+}
+.heading {
+  width: 100vw;
+}
+.heading header {
+  font-size: 50px;
   font-family: "Righteous", cursive;
-  text-align: center;
+  text-align: left;
+  margin: 1px 10px 10px 10px;
+  background-color: aqua;
 }
+
 .error {
   background-color: red;
 }
 .converter {
+  width: 100vw;
   background-color: orange;
   text-align: center;
 }
-.form {
+form {
+  width: 100vw;
   background-color: green;
   text-align: center;
 }
 .summary {
+  width: 100vw;
   background-color: yellow;
   text-align: center;
 }
 .transaction {
+  width: 100vw;
   background-color: violet;
   text-align: center;
 }
 .list {
   background-color: yellowgreen;
   text-align: center;
+}
+.transactionList {
+  display: flex;
 }

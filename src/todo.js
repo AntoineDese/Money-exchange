@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TransactionList from "./components/TransactionList";
+import TransactionListHeader from "./components/TransactionListHeader";
 import FormTransactionWrapper from "./components/FormTransactionWrapper";
 import ErrorMessage from "./components/ErrorMessage";
 import fetchRate from "./api/fetchRate";
@@ -36,21 +37,28 @@ const Exchange = () => {
       <div className="main-div">
         <div className="child-div">
           <div className="heading">
-            <h1>EURO x PLN</h1>
+            <header>Currency converter</header>
           </div>
           <ErrorMessage error={error} />
-          <div className="converter">Przelicznik: 1 EUR = {rate} PLN</div>
-          <FormTransactionWrapper
-            rate={rate}
-            setTransactions={setTransactions}
-          />
-          <TransactionList
-            transactions={transactions}
-            result={sum}
-            rate={rate}
-            deleteTransaction={deleteTransaction}
-          />
+          <div className="content-div">
+            <div className="converter">Rate: 1 EUR = {rate} PLN</div>
+            <FormTransactionWrapper
+              rate={rate}
+              setTransactions={setTransactions}
+            />
+            <TransactionListHeader
+              transactionsCount={transactions.length}
+              transactionsTotalValue={sum}
+            />
+            <p className="ListTitle">Lista transakcji:</p>
+          </div>
         </div>
+        <TransactionList
+          transactions={transactions}
+          result={sum}
+          rate={rate}
+          deleteTransaction={deleteTransaction}
+        />
       </div>
     </>
   );

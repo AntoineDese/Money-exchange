@@ -1,14 +1,9 @@
-import TransactionListHeader from "./TransactionListHeader";
+
 import Transaction from "./Transaction";
 import "../App.css";
 
 const TransactionList = props => {
-    return (
-        <>
-        <TransactionListHeader
-            transactionsCount={props.transactions.length}
-            transactionsTotalValue={props.result}
-          />
+    return (   
           <div className="transactionList">
             {props.transactions.map((transaction, index) => (
               <Transaction
@@ -21,7 +16,7 @@ const TransactionList = props => {
               />
             ))}
           </div>
-          </>
+          
     )
 }
 export default TransactionList;
