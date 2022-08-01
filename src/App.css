@@ -1,21 +1,20 @@
 body {
-  background-color: blueviolet;
+  background-color: darkgrey;
 }
 
 .child-div {
-  background-color: blue;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
 }
 .content-div {
-  background-color: sienna;
   display: flex;
-  width: 25vw;
+  width: 30vw;
   flex-wrap: wrap;
   margin: auto auto;
   flex-direction: row;
+  background-color: grey;
 }
 .heading {
   width: 100vw;
@@ -25,7 +24,6 @@ body {
   font-family: "Righteous", cursive;
   text-align: left;
   margin: 1px 10px 10px 10px;
-  background-color: aqua;
 }
 
 .error {
@@ -38,7 +36,7 @@ body {
 }
 form {
   width: 100vw;
-  background-color: green;
+
   text-align: center;
 }
 .summary {

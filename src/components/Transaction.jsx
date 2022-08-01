@@ -1,5 +1,5 @@
 import "../App.css";
-
+import Button from '@mui/material/Button';
 function Transaction (props) {
     return (
         <div className = "list">
@@ -7,13 +7,13 @@ function Transaction (props) {
     <p>Nazwa transakcji: {props.name}</p>
     <p>Wartość w EUR: {props.value}</p>
     <p>Wartość w PLN: {props.value * props.rate}</p>
-    <button
+    <Button variant="contained" size="small"
          onClick= {
          props.onDelete
          }
     >
         Usuń transakcje
-       </button>
+       </Button>
     </span>
     </div>)
 }
