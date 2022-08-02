@@ -50,8 +50,9 @@ const Exchange = () => {
               transactionsCount={transactions.length}
               transactionsTotalValue={sum}
             />
-            <p className="ListTitle">Lista transakcji:</p>
           </div>
+
+          <p className="ListTitle">Lista transakcji:</p>
         </div>
         <TransactionList
           transactions={transactions}

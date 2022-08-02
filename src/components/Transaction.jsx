@@ -7,7 +7,18 @@ function Transaction (props) {
     <p>Nazwa transakcji: {props.name}</p>
     <p>Wartość w EUR: {props.value}</p>
     <p>Wartość w PLN: {props.value * props.rate}</p>
-    <Button variant="contained" size="small"
+    <Button sx={[{
+            margin: 1,
+            bgcolor: 'text.secondary', 
+        },
+        {
+          '&:hover': {
+            color: 'white',
+            backgroundColor: 'text.primary',
+          },},
+        
+      ]}
+    variant="contained" size="small" color = "primary"
          onClick= {
          props.onDelete
          }

@@ -2,6 +2,7 @@ import "../App.css";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 const TransactionForm = props => {
+  console.log(props.formTransactionName)
     return (
         <div className = "form">
         <TextField sx={{
@@ -27,7 +28,7 @@ const TransactionForm = props => {
               onChange={(e) => props.setFormTransactionName(e.target.value)}
               value={props.formTransactionName}
             />
-            <Button sx={[{
+            <Button type = 'submit' sx={[{
             margin: 1,
             bgcolor: 'text.secondary', 
         },
@@ -39,14 +40,12 @@ const TransactionForm = props => {
         
       ]}
         variant="contained" size="small" color ="primary" 
-              onClick={() => {
-                props.convert();
-              }}
             >
               Przelicz
             </Button>
             </div>
-    )
+    )  
+    
 }
 
 export default TransactionForm;

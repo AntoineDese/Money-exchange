@@ -9,24 +9,27 @@ const FormTransactionWrapper = props => {
     const [formTransactionName, setFormTransactionName] = useState("");
     const [formTransactionValue, setFormTransactionValue] = useState("");
 
+    const convert = () => {
+      setFormExchangeValue(formTransactionValue * props.rate);
+      props.setTransactions((transactions) => [
+        ...transactions,
+        {
+          name: formTransactionName,
+          value: formTransactionValue,
+        },
+      ]);
+    };
+
     const handleSubmit = (event) => {
+        convert();
         event.preventDefault();
         setFormTransactionValue("");
         setFormExchangeValue(0);
         setFormTransactionName("");
-        event.target.reset();
+        
       };
 
-      const convert = () => {
-        setFormExchangeValue(formTransactionValue * props.rate);
-        props.setTransactions((transactions) => [
-          ...transactions,
-          {
-            name: formTransactionName,
-            value: formTransactionValue,
-          },
-        ]);
-      };
+      
 
     return (
         <>
@@ -38,7 +41,7 @@ const FormTransactionWrapper = props => {
               setFormTransactionName={setFormTransactionName}
               formTransactionName={formTransactionName}
               formTransactionValue={formTransactionValue}
-              convert={convert}
+              
             />
           </form>
           <DraftTransactionSummary
