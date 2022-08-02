@@ -2,7 +2,7 @@ import "../App.css";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 const TransactionForm = props => {
-  console.log(props.formTransactionName)
+  
     return (
         <div className = "form">
         <TextField type = 'number' sx={{
@@ -14,7 +14,7 @@ const TransactionForm = props => {
               placeholder="Wpisz wartość w euro"
               onChange={(e) => {
                 props.setFormTransactionValue(e.target.value);
-                props.setFormExchangeValue(e.target.value * props.rate);
+                props.setFormExchangeValue((e.target.value * props.rate).toFixed(2));
               }}
               value={props.formTransactionValue}
             />

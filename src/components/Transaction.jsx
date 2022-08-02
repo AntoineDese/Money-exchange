@@ -6,7 +6,7 @@ function Transaction (props) {
     <span>
     <p>Nazwa transakcji: {props.name}</p>
     <p>Wartość w EUR: {props.value}</p>
-    <p>Wartość w PLN: {props.value * props.rate}</p>
+    <p>Wartość w PLN: {(props.value * props.rate).toFixed(2)}</p>
     <Button sx={[{
             margin: 1,
             bgcolor: 'text.secondary', 

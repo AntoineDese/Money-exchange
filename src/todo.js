@@ -21,6 +21,16 @@ const Exchange = () => {
     );
   }, []);
 
+  useEffect(() => {
+    setTransactions(JSON.parse(localStorage.getItem("myData")));
+  }, []);
+
+  useEffect(() => {
+    if (transactions.length !== 0) {
+      localStorage.setItem("myData", JSON.stringify(transactions));
+    }
+  }, [transactions]);
+
   const deleteTransaction = (index) => {
     const filteredTransactions = transactions.filter((item, itemIndex) => {
       return itemIndex !== index;
