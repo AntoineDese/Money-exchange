@@ -5,7 +5,7 @@ const TransactionForm = props => {
   console.log(props.formTransactionName)
     return (
         <div className = "form">
-        <TextField sx={{
+        <TextField type = 'number' sx={{
             margin: 1,
             width: 200
         }}
