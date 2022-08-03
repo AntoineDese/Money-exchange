@@ -10,6 +10,7 @@ const Exchange = () => {
   const [error, setError] = useState(false);
   const [rate, setRate] = useState(0);
   const [transactions, setTransactions] = useState([]);
+  console.log("transactions", transactions);
 
   useEffect(() => {
     fetchRate(
@@ -22,7 +23,8 @@ const Exchange = () => {
   }, []);
 
   useEffect(() => {
-    setTransactions(JSON.parse(localStorage.getItem("myData")));
+    const parsedLocalStorageData = JSON.parse(localStorage.getItem("myData"));
+    setTransactions(parsedLocalStorageData ?? []);
   }, []);
 
   useEffect(() => {
