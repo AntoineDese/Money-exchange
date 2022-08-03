@@ -10,7 +10,7 @@ const Exchange = () => {
   const [error, setError] = useState(false);
   const [rate, setRate] = useState(0);
   const [transactions, setTransactions] = useState([]);
-  console.log("transactions", transactions);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     fetchRate(
@@ -21,17 +21,18 @@ const Exchange = () => {
       }
     );
   }, []);
-
+  console.log("transactions=", transactions, "mounted=", mounted);
   useEffect(() => {
     const parsedLocalStorageData = JSON.parse(localStorage.getItem("myData"));
     setTransactions(parsedLocalStorageData ?? []);
+    setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (transactions.length !== 0) {
+    if (mounted === true) {
       localStorage.setItem("myData", JSON.stringify(transactions));
     }
-  }, [transactions]);
+  }, [transactions, mounted]);
 
   const deleteTransaction = (index) => {
     const filteredTransactions = transactions.filter((item, itemIndex) => {
